@@ -36,6 +36,14 @@ We are going to run a couple INSERT/UPDATE/DELETE statements and put our SQL STA
 
 2. Pretend we are in the beginnings of an apocalyptic event. It started in Ohio. Update the `usersAddress` table and change every "address" in the state of OH to the text "REDACTED" since Ohio no longer exists. You should update 22 rows. Place this update statement in the section below. 
 
+UPDATE
+usersAddress
+SET
+address = 'REDACT'
+WHERE
+state = 'OH'
+
+
 3. Delete the user with the id of `114` from the `users` table.
 
 Did the above statement fail? Why? What does the error response say?
@@ -46,23 +54,80 @@ This should make sense because we can't have user addresses that don't correspon
 
 Let's delete the appropriate information from `usersContact`, `usersAddress` and finally `users` all corresponding to the user id of 114. Put all three DELETE statments below.
 
+DELETE FROM
+usersContact
+WHERE
+user_id = 114;
+
+DELETE FROM
+usersAddress
+WHERE
+user_id = 114;
+
+DELETE FROM
+users
+WHERE
+id = 114;
+
+
+
+
 
 ## SQL Statements
 
 1. INSERT two users:
 
+INSERT INTO users
+(first_name, last_name)
+VALUES
+('test', 'user'),
+('test2', 'user2');
+
+SELECT * 
+FROM users
+WHERE id IN (501, 502);
+
+// THERE IS ALSO ANOTHER WAY TO DO IT BY SINGLE IDS
+
+SELECT *
+FROM users
+Where id = 501; // or change it to 502
+
 
 2. UPDATE all Ohio addresses to "REDACTED":
+
+UPDATE
+usersAddress
+SET
+address = 'REDACT'
+WHERE
+state = 'OH'
+
 
 3. All three DELETES
 
 * DELETE from usersContact
 
+DELETE FROM
+usersContact
+WHERE
+user_id = 114;
 
 * DELETE from usersAddress
 
 
+DELETE FROM
+usersAddress
+WHERE
+user_id = 114;
+
+
 * DELETE from users
+DELETE FROM
+users
+WHERE
+id = 114;
+
 
 
 ## Summary
